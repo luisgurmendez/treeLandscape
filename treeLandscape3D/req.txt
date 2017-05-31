@@ -1,0 +1,7 @@
+Cosas para hacer:
+
+Forma de agregsr los arboles, como en age of empires.
+Agregar rios.
+Agregar rocas.
+Mover camara con el mouse.
+Ambientizar dependiente de zona, asi, europa, etc.

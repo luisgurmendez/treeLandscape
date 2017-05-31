@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landscape</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" type="text/css">
+
+    <script type="text/javascript" src="general/jquery-1.11.3.min.js"></script>
+
+    <script src="general/three.js"></script>
+    <script src="general/OBJLoader.js"></script>
+    <script src="general/MTLLoader.js"></script>
+    <script type="text/javascript" src="generalFunctions.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <div id="top-panel-wrapper">
+        <input id="searchTree" type="text" placeholder="Search tree...">
+        <div class="search-list-wrapper">
+
+        </div>
+        <div id="openDonationModalBtn"></div>
+    </div>
+
+    <div id="zoomPanel">
+        <div id="zoomInBtn" class="zoomBtn"><i class="fa fa-search-plus fa-2x"></i></div>
+        <div class="zoomBtn disable" id="zoomOutBtn"><i class="fa fa-search-minus fa-2x"></i></div>
+    </div>
+
+    <div id="donationModal" hidden>
+        <div id="donateModalTitle">Doná un árbol!</div>
+        <input class="donationModalInput" name="ownerName" type="text" placeholder="Nombre">
+        <input class="donationModalInput" name="ownerLastname" type="text" placeholder="Apellido">
+        <input class="donationModalInput" name="treeName" type="text" placeholder="Nombre de tu arbol">
+        <div id="addTreeBtn">Agregar</div>
+
+    </div>
+
+    <div id="donationBlackScreen" hidden></div>
+
+
+
+</body>
+</html>
+
+

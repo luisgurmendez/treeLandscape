@@ -1,0 +1,102 @@
+{
+	"metadata": {
+		"version": 4.4,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "91439CFA-E1EB-46A9-9A18-782BF775D1E4",
+			"type": "BoxBufferGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		},
+		{
+			"uuid": "1DFF4293-550C-47D9-83D8-1FFA545C74F0",
+			"type": "BoxBufferGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		},
+		{
+			"uuid": "0EBF2D0D-094F-44E0-9C95-870E48A87694",
+			"type": "BoxBufferGeometry",
+			"width": 1,
+			"height": 1,
+			"depth": 1
+		}],
+	"materials": [
+		{
+			"uuid": "0D5E7293-7CA0-4566-A782-ECA7E7250DBC",
+			"type": "MeshStandardMaterial",
+			"color": 7950602,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 4995855,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "3C8FA84B-6E96-4104-86EB-B8F0856EE9D1",
+			"type": "MeshStandardMaterial",
+			"color": 7224843,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 5714945,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		},
+		{
+			"uuid": "8B7B5C26-A55E-4C5C-AE77-C94F482A10FD",
+			"type": "MeshStandardMaterial",
+			"color": 7162636,
+			"roughness": 0.5,
+			"metalness": 0.5,
+			"emissive": 5648896,
+			"depthFunc": 3,
+			"depthTest": true,
+			"depthWrite": true,
+			"skinning": false,
+			"morphTargets": false
+		}],
+	"object": {
+		"uuid": "5EBBDA57-57B0-490E-81C7-E68A38E30784",
+		"type": "Group",
+		"name": "Squirle",
+		"castShadow": true,
+		"receiveShadow": true,
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+		"children": [
+			{
+				"uuid": "97046CDD-CFAC-400D-96B6-837970697201",
+				"type": "Mesh",
+				"name": "SquirleHead",
+				"matrix": [1,0,0,0,0,0.5,0,0,0,0,0.5,0,0,0.25,0,1],
+				"geometry": "91439CFA-E1EB-46A9-9A18-782BF775D1E4",
+				"material": "0D5E7293-7CA0-4566-A782-ECA7E7250DBC"
+			},
+			{
+				"uuid": "DE7DD63D-1DF6-4CDF-BADA-72AC18E44D79",
+				"type": "Mesh",
+				"name": "Box 3",
+				"matrix": [0.4000000059604645,0,0,0,0,0.4000000059604645,0,0,0,0,0.4000000059604645,0,0.6000000238418579,0.5,0,1],
+				"geometry": "1DFF4293-550C-47D9-83D8-1FFA545C74F0",
+				"material": "3C8FA84B-6E96-4104-86EB-B8F0856EE9D1"
+			},
+			{
+				"uuid": "93582D99-D7F7-40D5-AB4F-CFADD1916D7A",
+				"type": "Mesh",
+				"name": "SquirleTail",
+				"matrix": [0.6128355264663696,-0.5142301321029663,0,0,0.19283629953861237,0.2298133373260498,0,0,0,0,0.20000000298023224,0,-0.8999999761581421,0.5,0,1],
+				"geometry": "0EBF2D0D-094F-44E0-9C95-870E48A87694",
+				"material": "8B7B5C26-A55E-4C5C-AE77-C94F482A10FD"
+			}]
+	}
+}
