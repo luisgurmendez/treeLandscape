@@ -212,6 +212,53 @@ function onDocumentMouseMove( event ) {
 }
 
 
+function addFlower(){
+    var randomFlowerIndex = Math.random()*3 ;
+    pathToModel="models/nature/flower/flower" + randomFlowerIndex.toFixed()
+    var mtlLoader = new THREE.MTLLoader();
+
+    mtlLoader.load(pathToModel + ".mtl",function(materials){
+
+        materials.preload()
+        objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials(materials)
+
+        objLoader.load(pathToModel + ".obj",function(mesh){
+
+            mesh.traverse(function(node){
+                if( node instanceof THREE.Mesh ){
+                    //node.castShadow = true;
+                    node.receiveShadow = true;
+                    node.geometry.computeFaceNormals();
+                }
+            });
+
+            mesh.position.set(randomInNegativeMirrorInterval(50), 2, randomInNegativeMirrorInterval(50));
+
+            scene.add(mesh);
+
+            mesh.scale.multiplyScalar(1.5)
+
+
+        });
+
+    });
+
+}
+
+function addFlowers(n){
+
+    for(i=0; i<n; i++){
+        addFlower()
+    }
+
+}
+
+
+
+
+
+
 
 
 function mouseHoverCheck(){

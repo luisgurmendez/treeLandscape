@@ -171,6 +171,7 @@ function addTree(info){
                 mesh.position.set(randomInNegativeMirrorInterval(50), 0, randomInNegativeMirrorInterval(50));
 
             }
+
             mesh.rotation.y = -Math.PI/4;
             mesh.receiveShadow=true
             mesh.castShadow=true
@@ -198,10 +199,39 @@ function addTree(info){
 }
 
 
-function render()
-{
+function render() {
     renderer.render( scene, camera );
 }
+
+
+
+function validateDonationInputs(){
+    var valid = true;
+    $('.donationModalInput').each(function(){
+
+        var jThis=$(this)
+        if(jThis.val()==''){
+            valid=false;
+            jThis.css({'border':'2px solid #ff6d6d'})
+            setTimeout(function(){
+                jThis.css({'border':'2px solid #1ba312'})
+            },3000)
+        }
+    })
+
+
+    return valid;
+
+
+
+
+
+}
+
+
+
+
+
 
 
 
@@ -239,7 +269,7 @@ $(document).ready(function(){
             if(!treePositioningDummy.canPlant){
                 alert("Can plant there")
             }else{
-                var info={"tree[x]":treePositioningDummy.position.x,"tree[y]":treePositioningDummy.position.z,"tree[ownerName]":treePositioningDummy.info["tree[ownerName]"] ,"tree[ownerLastname]": treePositioningDummy.info["tree[ownerName]"],"tree[name]":treePositioningDummy.info["tree[name]"]}
+                var info={"tree[x]":treePositioningDummy.position.x,"tree[y]":treePositioningDummy.position.z,"tree[ownerName]":treePositioningDummy.info["tree[ownerName]"] ,"tree[ownerLastname]": treePositioningDummy.info["tree[ownerLastname]"],"tree[name]":treePositioningDummy.info["tree[name]"]}
                 console.log(info)
                 $.ajax({
                     url:"http://localhost:3000/tree/new",
@@ -297,51 +327,54 @@ $(document).ready(function(){
 
     $('#addTreeBtn').click(function(){
 
-        // CREATES DUMMY TREE
-        pathToModel="models/nature/tree"
-        var mtlLoader = new THREE.MTLLoader();
 
-        mtlLoader.load(pathToModel + ".mtl",function(materials){
+        if(validateDonationInputs()){
+            // CREATES DUMMY TREE
+            pathToModel="models/nature/tree"
+            var mtlLoader = new THREE.MTLLoader();
 
-            materials.preload()
-            objLoader = new THREE.OBJLoader();
-            objLoader.setMaterials(materials)
+            mtlLoader.load(pathToModel + ".mtl",function(materials){
 
-            objLoader.load(pathToModel + ".obj",function(mesh){
+                materials.preload()
+                objLoader = new THREE.OBJLoader();
+                objLoader.setMaterials(materials)
 
-                mesh.traverse(function(node){
-                    if( node instanceof THREE.Mesh ){
-                        node.castShadow = true;
-                        node.receiveShadow = true;
-                        node.geometry.computeFaceNormals();
+                objLoader.load(pathToModel + ".obj",function(mesh){
+
+                    mesh.traverse(function(node){
+                        if( node instanceof THREE.Mesh ){
+                            node.castShadow = true;
+                            node.receiveShadow = true;
+                            node.geometry.computeFaceNormals();
+                        }
+                    });
+
+                    treePositioningDummy=mesh;
+                    treePositioningDummy.canPlant=true;
+                    treePositioningDummy.canPlant=true;
+                    isPlantingTree=true;
+                    treePositioningDummy.materialColors=[]
+                    for(i=0;i < treePositioningDummy.children[0].material.materials.length;i++ ) {
+                        treePositioningDummy.materialColors[i]= treePositioningDummy.children[0].material.materials[i].color.getHex()
+                        //treePositioningDummy.children[0].material.materials[i].color.setHex(0x006bff)
+                        treePositioningDummy.children[0].material.materials[i].opacity=0.75;
+                        treePositioningDummy.children[0].material.materials[i].transparent=true;
+
                     }
+
+                    treePositioningDummy.info={"tree[ownerName]":$('.donationModalInput[name=ownerName]').val() ,"tree[ownerLastname]": $('.donationModalInput[name=ownerLastname]').val(),"tree[name]":$('.donationModalInput[name=treeName]').val()}
+                    hideDonationModal();
+
+                    scene.add(mesh);
+                    mesh.rotation.y = -Math.PI/4;
+                    mesh.scale.multiplyScalar(1.5)
+
+
                 });
-
-                treePositioningDummy=mesh;
-                treePositioningDummy.canPlant=true;
-                treePositioningDummy.canPlant=true;
-                isPlantingTree=true;
-                treePositioningDummy.materialColors=[]
-                for(i=0;i < treePositioningDummy.children[0].material.materials.length;i++ ) {
-                    treePositioningDummy.materialColors[i]= treePositioningDummy.children[0].material.materials[i].color.getHex()
-                    //treePositioningDummy.children[0].material.materials[i].color.setHex(0x006bff)
-                    treePositioningDummy.children[0].material.materials[i].opacity=0.75;
-                    treePositioningDummy.children[0].material.materials[i].transparent=true;
-
-                }
-
-                treePositioningDummy.info={"tree[ownerName]":$('.donationModalInput[name=ownerName]').val() ,"tree[ownerLastname]": $('.donationModalInput[name=ownerLastname]').val(),"tree[name]":$('.donationModalInput[name=treeName]').val()}
-                hideDonationModal();
-
-                scene.add(mesh);
-                mesh.rotation.y = -Math.PI/4;
-                mesh.scale.multiplyScalar(1.5)
-
 
             });
 
-        });
-
+        }
 
     })
 

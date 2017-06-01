@@ -1,7 +1,10 @@
 Cosas para hacer:
 
-Forma de agregsr los arboles, como en age of empires.
+Forma de agregsr los arboles, como en age of empires.   Check
 Agregar rios.
 Agregar rocas.
 Mover camara con el mouse.
 Ambientizar dependiente de zona, asi, europa, etc.
+Mas datos, elegir zona,
+Agregar pagos.
+Wizard en Modal
